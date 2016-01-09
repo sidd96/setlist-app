@@ -1,5 +1,6 @@
 package sidisoncreations.setlistapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         String searchUrl = SEARCH_API_URL + searchQuery;
         SearchSetlist task = new SearchSetlist();
         task.execute(searchUrl);
+
     }
 
 
@@ -36,15 +38,20 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected JSONObject doInBackground(String... searchUrl) {
-            JSONObject searchResults = Json.getJSON(searchUrl[0]);
-            return searchResults;
+            return Json.getJSON(searchUrl[0]);
         }
 
         @Override
         protected void onPostExecute(JSONObject searchResults) {
-            setlistSearchResults = searchResults;
-            System.out.println(setlistSearchResults.toString());
+            Intent passToArtist = makeArtistIntent(searchResults);
+            startActivity(passToArtist);
         }
+    }
+
+    private Intent makeArtistIntent(JSONObject data) {
+        Intent intent = new Intent(this, ArtistResultsActivity.class);
+        intent.putExtra("RESULTS_JSON", data.toString());
+        return intent;
     }
 
 }

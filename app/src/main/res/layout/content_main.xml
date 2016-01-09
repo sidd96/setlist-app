@@ -20,10 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="53dp"
         android:inputType="text"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:hint="Enter an artist&apos;s name"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,14 +36,7 @@
         android:layout_alignStart="@+id/artistName"
         android:background="#3f51b5"
         android:textColor="#ffffff"
-        android:typeface="normal" />
+        android:typeface="normal"
+        android:backgroundTint="#3749ab" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Enter an artist&apos;s name..."
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>
